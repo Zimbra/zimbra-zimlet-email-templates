@@ -1,0 +1,27 @@
+{
+	"emailTemplates": {
+		"templateBtnTooltip": "Email Templates",
+		"replaceDialog": {
+			"title": "Replace Template Data",
+			"tipMsg": "Please replace the following generic text(s) with valid data"
+		},
+		"insertDialog": {
+			"title": "Insert Template",
+			"btnLabel": "Insert"
+		},
+		"saveDialog": {
+			"title": "Save As Template",
+			"btnLabel": "Save"
+		},
+		"noTemplatesMsg": "Nothing to show.",
+		"subjectRequire": "Subject is a required field.",
+		"savingMsg": "Please wait, saving template...",
+		"savedMsg": "Template saved successfully.",
+		"saveMsgError": "Error in saving template.",
+		"saveMsgSelectFolder": "Please select folder to save template",
+		"saveMsgPermissionIssue": "You do not have the required rights on this folder",
+		"subjectConfirm": "Do you want to replace current subject?",
+		"saveTemplateLabel": "Save as Template",
+		"insertTemplateLabel": "Insert Template"
+	}
+}

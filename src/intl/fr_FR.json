@@ -1,0 +1,27 @@
+{
+    "emailTemplates": {
+        "templateBtnTooltip": "Modèles d'e-mail",
+        "replaceDialog": {
+            "title": "Remplacer les données du modèle",
+            "tipMsg": "Veuillez remplacer le ou les textes génériques suivants par des données valides"
+        },
+        "insertDialog": {
+            "title": "Insérer un modèle",
+            "btnLabel": "Insérer"
+        },
+        "saveDialog": {
+            "title": "Enregistrer en tant que modèle",
+            "btnLabel": "sauver"
+        },
+        "noTemplatesMsg": "Rien à montrer.",
+        "subjectRequire": "Le sujet est un champ obligatoire.",
+        "savingMsg": "Veuillez patienter, enregistrement du modèle ...",
+        "savedMsg": "Le modèle a été enregistré avec succès.",
+        "saveMsgError": "Erreur lors de l'enregistrement du modèle.",
+        "saveMsgSelectFolder": "Veuillez sélectionner le dossier pour enregistrer le modèle",
+        "saveMsgPermissionIssue": "Vous ne disposez pas des droits requis sur ce dossier",
+        "subjectConfirm": "Voulez-vous remplacer le sujet actuel?",
+        "saveTemplateLabel": "Enregistrer en tant que modèle",
+        "insertTemplateLabel": "Cliquez sur n'importe quel modèle pour insérer"
+    }
+}
