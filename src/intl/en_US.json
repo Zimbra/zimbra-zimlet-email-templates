@@ -1,27 +1,58 @@
 {
 	"emailTemplates": {
-		"templateBtnTooltip": "Email Templates",
-		"replaceDialog": {
-			"title": "Replace Template Data",
-			"tipMsg": "Please replace the following generic text(s) with valid data"
+		"helpModal": {
+			"composeWithTemplate": {
+				"list1": "Click on \"New Message\" button in the Mail tab to compose a new message.",
+				"list2": "Click on templates button and choose the \"Insert Template\" option, it will show the list of folders in a dialog.",
+				"list3": "Click on any folder and it will list templates in that folder.",
+				"list4": "Click on any template and click \"Insert\" button to insert that template.",
+				"list5": "In an email, the user can insert as many templates as s/he wishes.",
+				"list6": "The user can insert the template at any position using the cursor.",
+				"title": "Composing an email with templates"
+			},
+			"createTemplate": {
+				"intro": "The user can create a template with all the boiler-plate text and placeholders as follows.",
+				"list1": "Compose an email as usual. (Click on \"New Message\" button in the Mail tab)",
+				"list2": "Add the boiler-plate text as necessary.",
+				"list3": "We can add placeholders where appropriate using $ sign with a name in curly braces as ${MY_PLACEHOLDER}",
+				"list4": "Placeholder names are case-sensitive and can use albhabets, numbers, hyphen, underscore, dot and space characters.",
+				"title": "Creating a new template"
+			},
+			"notes": {
+				"list1": "Email templates works in HTML mode. Plain text mode not supported.",
+				"list2": "Templates are saved as nothing but regular emails. In that sense any previously existing email can be used in the Insert dialogue.",
+				"title": "Notes"
+			},
+			"saveTemplate": {
+				"list1": "Once the user creates a new template with the above steps, s/he should click on templates button and choose \"Save as Template\" option.",
+				"list2": "It will show the list of folders to save the template. User can select any folder and click the Save button.",
+				"list3": " Note: User can also save templates in any \"Shared Folders\" with write permission.",
+				"title": "Saving the template"
+			}
 		},
+		"helpTitle": "How to use Email Templates",
 		"insertDialog": {
-			"title": "Insert Template",
-			"btnLabel": "Insert"
+			"btnLabel": "Insert",
+			"title": "Insert Template"
+		},
+		"insertTemplateLabel": "Insert Template",
+		"noTemplatesMsg": "Nothing to show.",
+		"replaceDialog": {
+			"tipMsg": "Please replace the following generic text(s) with valid data",
+			"title": "Replace Template Data"
 		},
 		"saveDialog": {
-			"title": "Save As Template",
-			"btnLabel": "Save"
+			"btnLabel": "Save",
+			"title": "Save As Template"
 		},
-		"noTemplatesMsg": "Nothing to show.",
-		"subjectRequire": "Subject is a required field.",
-		"savingMsg": "Please wait, saving template...",
 		"savedMsg": "Template saved successfully.",
 		"saveMsgError": "Error in saving template.",
-		"saveMsgSelectFolder": "Please select folder to save template",
 		"saveMsgPermissionIssue": "You do not have the required rights on this folder",
-		"subjectConfirm": "Do you want to replace current subject?",
+		"saveMsgSelectFolder": "Please select folder to save template",
 		"saveTemplateLabel": "Save as Template",
-		"insertTemplateLabel": "Insert Template"
+		"savingMsg": "Please wait, saving template...",
+		"subjectConfirm": "Do you want to replace current subject?",
+		"subjectRequire": "Subject is a required field.",
+		"templateBtnTooltip": "Email Templates"
 	}
 }

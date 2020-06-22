@@ -1,30 +1,13 @@
-@import '~@zimbra/x-ui/refs.less';
-@import '~@zimbra/x-ui/helpers.less';
-
 .insertTemplateModal {
 	width: 600px;
-
-	@media(max-width: @screen-md) {
-		width: 100%;
-		height: 100%;
-	}
 
 	.header {
 		height: auto;
 
 		h2 {
 			padding-left: 27px;
-			font-family: @headings-font-family;
-			font-weight: @headings-font-weight;
-		}
-
-		@media(max-width: @screen-md) {
-			flex: none;
-			border-bottom: 1px solid @gray-lighter;
-			height: 60px;
-			h2 {
-				padding-top: 15px;
-			}
+			font-family: var(--headings-font-family);
+			font-weight: var(--headings-font-weight);
 		}
 	}
 
@@ -33,12 +16,6 @@
 		padding-top: 20px;
 		padding-left: 0;
 		padding-right: 0;
-		
-		@media(max-width: @screen-md) {
-			flex: auto;
-			padding-bottom: 15px;
-			max-height: calc(100% - 150px);
-		}
 		
 		.dataInner {
 			box-sizing: border-box;
@@ -71,16 +48,16 @@
 
 /* template-list*/
 .innerClass {
-	background-color: white;
+	background-color: var(--body-bg);
 	max-height: 400px;
 	overflow-y: auto;
 
 	.noItems {
 		display: block;
 		padding: 50px 0 0;
-		font-size: 120%;
+		font-size: var(--spacing-md);
 		text-align: center;
-		font-weight: 300;
+		font-weight: var(--headings-font-weight);
 		color: var(--placeholder-color);
 	}
 
@@ -93,7 +70,7 @@
 		border-bottom: 1px solid var(--gray-lighter);
 		transition: height 150ms ease;
 		cursor: pointer;
-		border-left: 4px solid transparent;
+		border-left: var(--spacing-xs) solid transparent;
 		align-items: center;
 	
 		> span {
@@ -111,9 +88,9 @@
 		}
 		
 		&.selected {
-			background: @list-hover-bg;
-			border-left: solid 4px @brand-primary;
-			color: @gray-base;
+			background: var(--list-hover-bg);
+			border-left: solid var(--spacing-xs) var(--brand-primary-500);
+			color: var(--gray-base);
 			z-index: 2;
 		}
 	}

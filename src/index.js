@@ -7,18 +7,13 @@ export default function Zimlet(context) {
 	const exports = {};
 
 	exports.init = function init() {
-		plugins.register('slot::compose-footer-right-btn', templateBtn);
+		const options = createOptions(context);
+		plugins.register('slot::compose-sender-options-menu', options);
 	};
-
-	const templateBtn = withIntl()(props => {
-		return (
-			<TemplateOptions
-				getMessage={props.getMessage}
-				insertAtCaret={props.insertAtCaret}
-				subjectInput={props.subjectInput}
-				context={context}
-			/>
-		);
-	});
 	return exports;
 }
+
+function createOptions(context) {
+	return props => (<TemplateOptions {...props} context={context}></TemplateOptions>);
+}
+
