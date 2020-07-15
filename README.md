@@ -1,36 +1,36 @@
 # zimbra-zimlet-email-templates
-This is a Zimlet that helps the user to maintain and use Email Templates. An User will use templates when s/he has to send a lot of 'similar looking' emails with small changes. Consider an Accountant in the finance department sending invoices at the end of the month. The Accountant will create an invoice template with all the boiler plate text in it, leaving placeholders in the template where the changing data needs to go. When it is time to send out the actual invoices, the accountant will do the following:
+This is a Zimlet that helps the user to maintain and use Email Templates. An User will use templates when s/he has to send a lot of 'similar looking' emails but with small changes. Consider an Accountant in the finance department sending invoices at the end of the month. The Accountant will create an invoice template with all the boiler plate text in it, leaving placeholders in the template where the changing data needs to go. When it is time to send out the actual invoices, the accountant will do the following:
 * Compose a new email.
 * Insert the invoice template into this new email.
-* While inserting user will replace the actual values for the placehoder.
+* While inserting, the user will replace the actual values for the placehoder.
 * Send the email.
 
-Thus this Zimlet eases the user's job when they need to send many emails with boiler plate content and with small changes for each instance
+Thus this Zimlet eases the user's job when they need to send many emails with boiler plate content and with small changes for each instance.
 
 ## Loading the Zimlet
 Like all other Zimlets, this one will also be available to the user when the Administrator enables it.
-On compose mail, when we see a templates button at bottom-right, that means this zimlet is loaded.
+On the compose email screen, when the user sees a templates button at bottom-right(figure #1), it means this zimlet is loaded and available.
 
 ## Creating a new template
-User creates a template with all the boiler-plate text and placeholders as follows.
-* Compose a mail like normal message. (Click on "New Message" button in the Mail tab)
-* Add the boler-plate text as necessary
-* We can add placeholders where appropriate using dollar sign with any variable name in curly braces as ${PLACEHOLDER_NAME}
-* Placeholder names are case-sensitive. Placeholder name can use albhabets, numbers, dash, underscore, dot and space character.
+The user can create a template with all the boiler-plate text and placeholders as follows (figure #1).
+* Compose an email as usual. (Click on "New Message" button in the Mail tab)
+* Add the boiler-plate text as necessary.
+* We can add placeholders where appropriate using $ sign with a name in curly braces as ${MY_PLACEHOLDER}
+* Placeholder names are case-sensitive and can use albhabets, numbers, hyphen, underscore, dot and space characters.
 
-## Save a template
-* Once we create a new template with above steps, click on "Save as Template" option.
-* It will show the list of folders to save the template. User can select any folder and save the template.
-* We can also save templates in any "Shared Folders" having write permission to the folder.
+## Saving the template
+* Once the user creates a new template with the above steps, s/he should click on templates button and choose "Save as Template" option (figure #1).
+* It will show the list of folders to save the template. User can select any folder and click the Save button.
+Note: User can also save templates in any "Shared Folders" with write permission.
 
-## Composing email with template
+## Composing an email with templates
 * Click on "New Message" button in the Mail tab to compose a new message.
-* Click on the body of composer area to place the cursor.
-* Click on "Insert Template" options, it will show the list of folders in a dialog 
-* Click on any folder and it will list templates under that folder.
-* Click on any template and click "Insert" button to load that template.
-* User can insert as many templates as he wishes.
-* Templates are saved as nothing but regular emails. In that sense any previously existing email can be used in the Insert dialogue.
+* Click on templates button and choose the "Insert Template" option, it will show the list of folders in a dialog.
+* Click on any folder and it will list templates in that folder.
+* Click on any template and click "Insert" button to insert that template.
+* In an email, the user can insert as many templates as s/he wishes.
+* The user can insert the template at any position using the cursor.
+Note: Templates are saved as nothing but regular emails. In that sense any previously existing email can be used in the Insert dialogue.
 
 ## Screenshots
 > ![](screenshots/zimlet-button.png)
