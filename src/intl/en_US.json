@@ -3,7 +3,7 @@
 		"helpModal": {
 			"composeWithTemplate": {
 				"list1": "Click on \"New Message\" button in the Mail tab to compose a new message.",
-				"list2": "Click on templates button and choose the \"Insert Template\" option, it will show the list of folders in a dialog.",
+				"list2": "Click on three dots menu and choose the \"Insert Template\" option, it will show the list of folders in a dialog.",
 				"list3": "Click on any folder and it will list templates in that folder.",
 				"list4": "Click on any template and click \"Insert\" button to insert that template.",
 				"list5": "In an email, the user can insert as many templates as s/he wishes.",
@@ -24,7 +24,7 @@
 				"title": "Notes"
 			},
 			"saveTemplate": {
-				"list1": "Once the user creates a new template with the above steps, s/he should click on templates button and choose \"Save as Template\" option.",
+				"list1": "Once the user creates a new template with the above steps, s/he should click on three dots menu and choose \"Save as Template\" option.",
 				"list2": "It will show the list of folders to save the template. User can select any folder and click the Save button.",
 				"list3": " Note: User can also save templates in any \"Shared Folders\" with write permission.",
 				"title": "Saving the template"

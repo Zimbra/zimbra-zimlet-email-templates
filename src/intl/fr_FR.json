@@ -3,7 +3,7 @@
         "helpModal": {
             "composeWithTemplate": {
                 "list1": "Cliquez sur le bouton \"Nouveau message\" dans l'onglet Courrier pour composer un nouveau message.",
-                "list2": "Cliquez sur le bouton des modèles et choisissez l'option \"Insérer un modèle\", il affichera la liste des dossiers dans une boîte de dialogue.",
+                "list2": "Cliquez sur le menu à trois points et choisissez l'option \"Insérer un modèle\", il affichera la liste des dossiers dans une boîte de dialogue.",
                 "list3": "Cliquez sur n'importe quel dossier et il répertoriera les modèles dans ce dossier.",
                 "list4": "Cliquez sur n'importe quel modèle et cliquez sur le bouton \"Insérer\" pour insérer ce modèle.",
                 "list5": "Dans un e-mail, l'utilisateur peut insérer autant de modèles qu'il le souhaite.",
@@ -24,7 +24,7 @@
                 "title": "Remarques"
             },
             "saveTemplate": {
-                "list1": "Une fois que l'utilisateur a créé un nouveau modèle avec les étapes ci-dessus, il doit cliquer sur le bouton des modèles et choisir l'option \"Enregistrer en tant que modèle\".",
+                "list1": "Une fois que l'utilisateur a créé un nouveau modèle avec les étapes ci-dessus, il doit cliquez sur le menu à trois points et choisir l'option \"Enregistrer en tant que modèle\".",
                 "list2": "Il affichera la liste des dossiers pour enregistrer le modèle. L'utilisateur peut sélectionner n'importe quel dossier et cliquer sur le bouton Enregistrer.",
                 "list3": " Remarque: L'utilisateur peut également enregistrer des modèles dans n'importe quel \"Dossiers partagés\" avec une autorisation d'écriture.",
                 "title": "Enregistrement du modèle"
