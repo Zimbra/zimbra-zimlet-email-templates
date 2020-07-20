@@ -1,0 +1,58 @@
+{
+    "emailTemplates": {
+        "helpModal": {
+            "composeWithTemplate": {
+                "list1": "Cliquez sur le bouton \"Nouveau message\" dans l'onglet Courrier pour composer un nouveau message.",
+                "list2": "Cliquez sur le menu à trois points et choisissez l'option \"Insérer un modèle\", il affichera la liste des dossiers dans une boîte de dialogue.",
+                "list3": "Cliquez sur n'importe quel dossier et il répertoriera les modèles dans ce dossier.",
+                "list4": "Cliquez sur n'importe quel modèle et cliquez sur le bouton \"Insérer\" pour insérer ce modèle.",
+                "list5": "Dans un e-mail, l'utilisateur peut insérer autant de modèles qu'il le souhaite.",
+                "list6": "L'utilisateur peut insérer le modèle à n'importe quelle position à l'aide du curseur.",
+                "title": "Composer un e-mail avec des modèles"
+            },
+            "createTemplate": {
+                "intro": "L'utilisateur peut créer un modèle avec tout le texte de la plaque de la chaudière et les espaces réservés comme suit.",
+                "list1": "Composez un e-mail comme d'habitude. (Cliquez sur le bouton \"Nouveau message\" dans l'onglet Courrier)",
+                "list2": "Ajoutez le texte de la plaque de la chaudière si nécessaire.",
+                "list3": "Nous pouvons ajouter des espaces réservés le cas échéant en utilisant $ sign avec un nom entre accolades comme $ {MY_PLACEHOLDER}",
+                "list4": "Les noms d'espace réservé sont sensibles à la casse et peuvent utiliser des alphabets, des chiffres, des tirets, des traits de soulignement, des points et des espaces.",
+                "title": "Création d'un nouveau modèle"
+            },
+            "notes": {
+                "list1": "Les modèles d'e-mail fonctionnent en mode HTML. Le mode texte brut n'est pas pris en charge.",
+                "list2": "Les modèles sont enregistrés sous forme de courriels normaux. En ce sens, tout e-mail existant précédemment peut être utilisé dans la boîte de dialogue Insérer.",
+                "title": "Remarques"
+            },
+            "saveTemplate": {
+                "list1": "Une fois que l'utilisateur a créé un nouveau modèle avec les étapes ci-dessus, il doit cliquez sur le menu à trois points et choisir l'option \"Enregistrer en tant que modèle\".",
+                "list2": "Il affichera la liste des dossiers pour enregistrer le modèle. L'utilisateur peut sélectionner n'importe quel dossier et cliquer sur le bouton Enregistrer.",
+                "list3": " Remarque: L'utilisateur peut également enregistrer des modèles dans n'importe quel \"Dossiers partagés\" avec une autorisation d'écriture.",
+                "title": "Enregistrement du modèle"
+            }
+        },
+        "helpTitle": "Comment utiliser les modèles d'e-mail",
+        "insertDialog": {
+            "btnLabel": "Insérer",
+            "title": "Insérer un modèle"
+        },
+        "insertTemplateLabel": "Cliquez sur n'importe quel modèle pour insérer",
+        "noTemplatesMsg": "Rien à montrer.",
+        "replaceDialog": {
+            "tipMsg": "Veuillez remplacer le ou les textes génériques suivants par des données valides",
+            "title": "Remplacer les données du modèle"
+        },
+        "saveDialog": {
+            "btnLabel": "sauver",
+            "title": "Enregistrer en tant que modèle"
+        },
+        "savedMsg": "Le modèle a été enregistré avec succès.",
+        "saveMsgError": "Erreur lors de l'enregistrement du modèle.",
+        "saveMsgPermissionIssue": "Vous ne disposez pas des droits requis sur ce dossier",
+        "saveMsgSelectFolder": "Veuillez sélectionner le dossier pour enregistrer le modèle",
+        "saveTemplateLabel": "Enregistrer en tant que modèle",
+        "savingMsg": "Veuillez patienter, enregistrement du modèle ...",
+        "subjectConfirm": "Voulez-vous remplacer le sujet actuel?",
+        "subjectRequire": "Le sujet est un champ obligatoire.",
+        "templateBtnTooltip": "Modèles d'e-mail"
+    }
+}

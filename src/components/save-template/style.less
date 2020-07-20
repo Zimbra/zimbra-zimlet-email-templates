@@ -1,0 +1,46 @@
+.saveTemplateModal {
+	width: 300px;
+
+	.header {
+		height: auto;
+
+		h2 {
+			padding-left: 27px;
+			font-family: var(--headings-font-family);
+			font-weight: var(--headings-font-weight);
+		}
+	}
+
+	.content {
+		margin-top: 0;
+		padding-top: 20px;
+		padding-left: 0;
+		padding-right: 0;
+		
+		.dataInner {
+			box-sizing: border-box;
+			height: 300px;
+			display: flex;
+			border-top:  1px solid var(--gray-lighter);
+			border-bottom: 1px solid var(--gray-lighter);
+
+			.leftSide {
+				background-color: var(--gray-lightest);
+				width: 100%;
+				height: 100%;
+				overflow-y: auto;
+				padding: 5px;
+
+				.saveTip {
+					margin: 0 auto;
+   					padding: 5px 15px;
+				}
+			}
+		}
+	}
+
+	.footer {
+		padding-left: 27px;
+		padding-top: 15px;
+	}
+}
