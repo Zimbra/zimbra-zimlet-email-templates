@@ -11,7 +11,7 @@ import TemplatePane from './template-pane';
 import { FILTER_FOLDER_IDS, FOLDER_VIEW } from '../../constants';
 import { Spinner } from '@zimbra-client/blocks';
 import { useState, useEffect, useCallback } from 'preact/hooks';
-import { useFoldersQuery } from '@zimbra-client/graphql';
+import { useFoldersQuery } from '@zimbra-client/hooks/graphql';
 import { getFolderName } from '../../lib/util';
 import get from 'lodash-es/get';
 import withIntl from '../../enhancers';

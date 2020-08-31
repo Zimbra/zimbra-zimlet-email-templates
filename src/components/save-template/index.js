@@ -6,7 +6,7 @@ import { Spinner } from '@zimbra-client/blocks';
 import { FILTER_FOLDER_IDS, FOLDER_VIEW } from '../../constants';
 import { useState, useEffect, useCallback } from 'preact/hooks';
 import { moveMessage, getFolderName } from '../../lib/util';
-import { useFoldersQuery } from '@zimbra-client/graphql';
+import { useFoldersQuery } from '@zimbra-client/hooks/graphql';
 import withIntl from '../../enhancers';
 import get from 'lodash-es/get';
 
