@@ -162,3 +162,15 @@ this.props.insertAtCaret(msgBody, false);
 ```javascript
 const msg = this.props.getMessage();
 ```
+
+## Zimlet slot compose-sender-options-menu
+
+This Zimlet uses the compose-sender-options-menu Zimlet slot. This slot allows a Zimlet developer to get/set the subject and body of the email message a user is composing. The Zimlet slot has the following props:
+
+| prop |
+|---|
+| getMessage |
+| insertAtCaret |
+| getSubject |
+| setSubject |
+| isPlainText |
