@@ -88,7 +88,7 @@ Create a folder on your local computer to store the Email Templates Zimlet:
 
       mkdir templates_zimlet
       cd templates_zimlet
-      git clone git@github.com:ZimbraOS/zimbra-zimlet-email-templates.git
+      git clone git@github.com:Zimbra/zimbra-zimlet-email-templates.git
       cd zimbra-zimlet-email-templates
       npm install
       zimlet watch
