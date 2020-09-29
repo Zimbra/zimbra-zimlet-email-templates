@@ -25,7 +25,7 @@ Note: User can also save templates in any "Shared Folders" with write permission
 
 ## Composing an email with templates
 * Click on "New Message" button in the Mail tab to compose a new message.
-* Click on templates button and choose the "Insert Template" option, it will show the list of folders in a dialog.
+* Click on ...-menu and choose the "Insert Template" option, it will show the list of folders in a dialog.
 * Click on any folder and it will list templates in that folder.
 * Click on any template and click "Insert" button to insert that template.
 * In an email, the user can insert as many templates as s/he wishes.
