@@ -1,5 +1,50 @@
 version: 2.1
 
+############################################################################
+orbs:
+  aws-s3: circleci/aws-s3@1.0.11
+  jq: circleci/jq@1.9.1
+
+############################################################################
+
+attach-workspace: &attach-workspace
+  attach_workspace:
+    at: ~/
+
+store-artifacts: &store-artifacts
+  store_artifacts:
+    path: build/dist
+
+persist-workspace: &persist-workspace
+  persist_to_workspace:
+    root: ~/
+    paths:
+      - repo
+
+persist-artifacts: &persist-artifacts
+  persist_to_workspace:
+    root: ~/
+    paths:
+      - repo/build/dist
+
+############################################################################
+
+commands:
+  package-builder:
+    steps:
+      - *attach-workspace
+      - jq/install
+      - run:
+          name: Build with package builder
+          command: |
+            PKG_VERSION=$(jq -r '.version' package.json)
+            PKG_NAME=$(jq -r '.name' package.json)
+            PKG_DESC=$(jq -r '.description' package.json)
+            make WORKSPACE="~/repo/pkg" VERSION=$PKG_VERSION NAME=$PKG_NAME DESC="$PKG_DESC"
+      - *store-artifacts
+      - *persist-artifacts
+
+
 ################# Jobs #########################
 
 jobs:
@@ -21,6 +66,10 @@ jobs:
       # install dependencies
       - run: npm install --no-audit
 
+      - run:
+          name: Checking out dependencies
+          command: git clone https://github.com/Zimbra/zm-pkg-tool.git ~/zm-pkg-tool
+
       - save_cache:
           paths:
             - node_modules
@@ -30,13 +79,13 @@ jobs:
           root: ~/
           paths:
             - repo
+            - zm-pkg-tool
 
   zip:
     executor: default-executor
 
     steps:
-      - attach_workspace:
-          at: ~/
+      - *attach-workspace
 
       - run: |
           npm run build
@@ -45,12 +94,13 @@ jobs:
       - store_artifacts:
           path: ~/repo/pkg
 
+      - *persist-workspace
+
   test:
     executor: default-executor
 
     steps:
-      - attach_workspace:
-          at: ~/
+      - *attach-workspace
 
       - run: npm test
 
@@ -58,10 +108,73 @@ jobs:
     executor: default-executor
 
     steps:
-      - attach_workspace:
-          at: ~/
+      - *attach-workspace
 
       - run: npm run security:audit
+
+  build-u18:
+    working_directory: ~/repo
+    shell: /bin/bash -eo pipefail
+    docker:
+      - image: zimbra/zm-base-os:devcore-ubuntu-18.04
+    steps:
+      - package-builder
+
+  build-u16:
+    working_directory: ~/repo
+    shell: /bin/bash -eo pipefail
+    docker:
+      - image: zimbra/zm-base-os:devcore-ubuntu-16.04
+    steps:
+      - package-builder
+
+  build-u14:
+    working_directory: ~/repo
+    shell: /bin/bash -eo pipefail
+    docker:
+      - image: zimbra/zm-base-os:devcore-ubuntu-14.04
+    steps:
+      - package-builder
+
+  build-c8:
+    working_directory: ~/repo
+    shell: /bin/bash -eo pipefail
+    docker:
+      - image: zimbra/zm-base-os:devcore-centos-8
+    steps:
+      - package-builder
+
+  build-c7:
+    working_directory: ~/repo
+    shell: /bin/bash -eo pipefail
+    docker:
+      - image: zimbra/zm-base-os:devcore-centos-7
+    steps:
+      - package-builder
+
+  build-c6:
+    working_directory: ~/repo
+    shell: /bin/bash -eo pipefail
+    docker:
+      - image: zimbra/zm-base-os:devcore-centos-6
+    steps:
+      - package-builder
+
+  deploy-s3:
+    working_directory: ~/repo
+    docker:
+      - image: "circleci/python:2.7"
+    steps:
+      - *attach-workspace
+
+      - aws-s3/sync:
+          from: "~/repo/build/dist/"
+          to: "s3://files.zimbra.com/dev-releases/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM/archives/"
+          aws-access-key-id: RELEASE_AWS_ACCESS_KEY_ID
+          aws-secret-access-key: RELEASE_AWS_SECRET_ACCESS_KEY
+          aws-region: RELEASE_AWS_DEFAULT_REGION
+          arguments: --acl public-read
+
 
 ################################################
 
@@ -74,6 +187,7 @@ executors:
       - image: circleci/node:11
 
 ################################################
+
 
 ################# Workflows ####################
 
@@ -95,4 +209,43 @@ workflows:
       - security-audit:
           requires:
             - prepare-npm-deps
+
+      - build-u18:
+          requires:
+            - zip
+
+      - build-u16:
+          requires:
+            - zip
+
+      - build-u14:
+          requires:
+            - zip
+
+      - build-c8:
+          requires:
+            - zip
+
+      - build-c7:
+          requires:
+            - zip
+
+      - build-c6:
+          requires:
+            - zip
+
+      - deploy-s3-approval:
+          type: approval
+          requires:
+            - build-u18
+            - build-u16
+            - build-u14
+            - build-c8
+            - build-c7
+            - build-c6
+
+      - deploy-s3:
+          requires:
+            - deploy-s3-approval
+
 ################################################
