@@ -249,6 +249,7 @@ workflows:
       - deploy-s3-approval:
           type: approval
           requires:
+            - build-u20
             - build-u18
             - build-u16
             - build-u14
