@@ -112,6 +112,14 @@ jobs:
 
       - run: npm run security:audit
 
+  build-u20:
+    working_directory: ~/repo
+    shell: /bin/bash -eo pipefail
+    docker:
+      - image: zimbra/zm-base-os:devcore-ubuntu-20.04
+    steps:
+      - package-builder
+
   build-u18:
     working_directory: ~/repo
     shell: /bin/bash -eo pipefail
@@ -210,6 +218,10 @@ workflows:
           requires:
             - prepare-npm-deps
 
+      - build-u20:
+          requires:
+            - zip
+
       - build-u18:
           requires:
             - zip
@@ -237,6 +249,7 @@ workflows:
       - deploy-s3-approval:
           type: approval
           requires:
+            - build-u20
             - build-u18
             - build-u16
             - build-u14
