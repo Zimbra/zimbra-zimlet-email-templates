@@ -8,7 +8,7 @@
   "main": "build/index.js",
   "module": "src/index.js",
   "scripts": {
-    "build": "zimlet build && cp .netlify/* build",
+    "build": "zimlet build",
     "watch": "zimlet watch",
     "start": "zimlet watch",
     "package": "zimlet package --name $npm_package_name --description \"$npm_package_description\" --label \"$npm_package_label\" --pkg-version $npm_package_version --zimbraXVersion '^4.0.0'",
