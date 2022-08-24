@@ -136,14 +136,6 @@ jobs:
     steps:
       - package-builder
 
-  build-u14:
-    working_directory: ~/repo
-    shell: /bin/bash -eo pipefail
-    docker:
-      - image: zimbra/zm-base-os:devcore-ubuntu-14.04
-    steps:
-      - package-builder
-
   build-c8:
     working_directory: ~/repo
     shell: /bin/bash -eo pipefail
@@ -157,14 +149,6 @@ jobs:
     shell: /bin/bash -eo pipefail
     docker:
       - image: zimbra/zm-base-os:devcore-centos-7
-    steps:
-      - package-builder
-
-  build-c6:
-    working_directory: ~/repo
-    shell: /bin/bash -eo pipefail
-    docker:
-      - image: zimbra/zm-base-os:devcore-centos-6
     steps:
       - package-builder
 
@@ -230,19 +214,11 @@ workflows:
           requires:
             - zip
 
-      - build-u14:
-          requires:
-            - zip
-
       - build-c8:
           requires:
             - zip
 
       - build-c7:
-          requires:
-            - zip
-
-      - build-c6:
           requires:
             - zip
 
@@ -252,10 +228,8 @@ workflows:
             - build-u20
             - build-u18
             - build-u16
-            - build-u14
             - build-c8
             - build-c7
-            - build-c6
 
       - deploy-s3:
           requires:
