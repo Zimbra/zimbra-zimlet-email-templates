@@ -236,7 +236,7 @@ workflows:
             - build-c7
 
       - deploy-s3:
-         context:
+          context:
             - aws
           requires:
             - deploy-s3-approval
