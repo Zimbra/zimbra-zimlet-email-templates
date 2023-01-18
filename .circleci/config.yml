@@ -188,8 +188,12 @@ workflows:
 
   commit-workflow:
     jobs:
-      - prepare-npm-deps
+      - build:
+         type: approval
 
+      - prepare-npm-deps:
+         requires:
+           - build
       - zip:
           requires:
             - prepare-npm-deps
@@ -232,6 +236,8 @@ workflows:
             - build-c7
 
       - deploy-s3:
+          context:
+            - aws
           requires:
             - deploy-s3-approval
 
