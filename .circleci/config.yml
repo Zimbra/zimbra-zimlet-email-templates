@@ -112,6 +112,17 @@ jobs:
 
       - run: npm run security:audit
 
+  build-u22:
+    working_directory: ~/repo
+    shell: /bin/bash -eo pipefail
+    docker:
+      - image: $DOCKER_REGISTRY/zm-base-os:devcore-ubuntu-22.04
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
+    steps:
+      - package-builder
+
   build-u20:
     working_directory: ~/repo
     shell: /bin/bash -eo pipefail
@@ -206,6 +217,12 @@ workflows:
           requires:
             - prepare-npm-deps
 
+      - build-u22:
+          requires:
+            - zip
+          context:
+            - docker-dev-registry
+
       - build-u20:
           requires:
             - zip
@@ -229,6 +246,7 @@ workflows:
       - deploy-s3-approval:
           type: approval
           requires:
+            - build-u22
             - build-u20
             - build-u18
             - build-u16
