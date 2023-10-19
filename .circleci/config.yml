@@ -147,6 +147,17 @@ jobs:
     steps:
       - package-builder
 
+  build-c9:
+    working_directory: ~/repo
+    shell: /bin/bash -eo pipefail
+    docker:
+      - image: $DOCKER_REGISTRY/zm-base-os:devcore-centos-9
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
+    steps:
+      - package-builder
+
   build-c8:
     working_directory: ~/repo
     shell: /bin/bash -eo pipefail
@@ -235,6 +246,12 @@ workflows:
           requires:
             - zip
 
+      - build-c9:
+          requires:
+            - zip
+          context:
+            - docker-dev-registry
+
       - build-c8:
           requires:
             - zip
@@ -250,6 +267,7 @@ workflows:
             - build-u20
             - build-u18
             - build-u16
+            - build-c9
             - build-c8
             - build-c7
 
