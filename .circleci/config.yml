@@ -127,7 +127,10 @@ jobs:
     working_directory: ~/repo
     shell: /bin/bash -eo pipefail
     docker:
-      - image: zimbra/zm-base-os:devcore-ubuntu-20.04
+      - image: $DOCKER_REGISTRY/zm-base-os:devcore-ubuntu-20.04
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
     steps:
       - package-builder
 
@@ -135,7 +138,10 @@ jobs:
     working_directory: ~/repo
     shell: /bin/bash -eo pipefail
     docker:
-      - image: zimbra/zm-base-os:devcore-ubuntu-18.04
+      - image: $DOCKER_REGISTRY/zm-base-os:devcore-ubuntu-18.04
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
     steps:
       - package-builder
 
@@ -143,7 +149,10 @@ jobs:
     working_directory: ~/repo
     shell: /bin/bash -eo pipefail
     docker:
-      - image: zimbra/zm-base-os:devcore-ubuntu-16.04
+      - image: $DOCKER_REGISTRY/zm-base-os:devcore-ubuntu-16.04
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
     steps:
       - package-builder
 
@@ -162,7 +171,10 @@ jobs:
     working_directory: ~/repo
     shell: /bin/bash -eo pipefail
     docker:
-      - image: zimbra/zm-base-os:devcore-centos-8
+      - image: $DOCKER_REGISTRY/zm-base-os:devcore-centos-8
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
     steps:
       - package-builder
 
@@ -170,7 +182,10 @@ jobs:
     working_directory: ~/repo
     shell: /bin/bash -eo pipefail
     docker:
-      - image: zimbra/zm-base-os:devcore-centos-7
+      - image: $DOCKER_REGISTRY/zm-base-os:devcore-centos-7
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
     steps:
       - package-builder
 
@@ -237,14 +252,20 @@ workflows:
       - build-u20:
           requires:
             - zip
+          context:
+            - docker-dev-registry
 
       - build-u18:
           requires:
             - zip
+          context:
+            - docker-dev-registry
 
       - build-u16:
           requires:
             - zip
+          context:
+            - docker-dev-registry
 
       - build-c9:
           requires:
@@ -255,10 +276,14 @@ workflows:
       - build-c8:
           requires:
             - zip
+          context:
+            - docker-dev-registry
 
       - build-c7:
           requires:
             - zip
+          context:
+            - docker-dev-registry
 
       - deploy-s3-approval:
           type: approval
