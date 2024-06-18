@@ -50,10 +50,8 @@ commands:
 jobs:
   prepare-npm-deps:
     executor: default-executor
-
     steps:
       - checkout
-
       # Download cached dependencies
       - restore_cache:
           keys:
