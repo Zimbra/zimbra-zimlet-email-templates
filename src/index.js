@@ -1,5 +1,4 @@
 import { createElement } from 'preact';
-import withIntl from './enhancers';
 import TemplateOptions from './components/template-options';
 
 export default function Zimlet(context) {
@@ -14,6 +13,9 @@ export default function Zimlet(context) {
 }
 
 function createOptions(context) {
-	return props => (<TemplateOptions {...props} context={context}></TemplateOptions>);
+	return props => {
+		if (props.matchesScreenMd) {
+			return <TemplateOptions {...props} context={context} />;
+		}
+	};
 }
-
