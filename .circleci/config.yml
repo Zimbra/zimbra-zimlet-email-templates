@@ -108,7 +108,18 @@ jobs:
       - *attach-workspace
 
       - run: npm run security:audit
-
+  
+  build-u24:
+    working_directory: ~/repo
+    shell: /bin/bash -eo pipefail
+    docker:
+      - image: $DOCKER_REGISTRY/zm-base-os:devcore-ubuntu-24.04
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
+    steps:
+      - package-builder
+  
   build-u22:
     working_directory: ~/repo
     shell: /bin/bash -eo pipefail
@@ -239,6 +250,12 @@ workflows:
           requires:
             - prepare-npm-deps
 
+      - build-u24:
+          requires:
+            - zip
+          context:
+            - docker-dev-registry
+      
       - build-u22:
           requires:
             - zip
@@ -284,6 +301,7 @@ workflows:
       - deploy-s3-approval:
           type: approval
           requires:
+            - build-u24
             - build-u22
             - build-u20
             - build-u18
