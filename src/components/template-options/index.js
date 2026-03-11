@@ -10,6 +10,7 @@ import HelpModal from '../help-modal';
 import { callWith } from '@zimbra-client/util';
 import { INSERT_MODAL, SAVE_MODAL, HELP_MODAL } from '../../constants';
 import withIntl from '../../enhancers';
+import { FileText, FileBox, FileQuestionMark } from 'lucide-preact';
 
 function TemplateOptions({
 	insertAtCaret,
@@ -58,14 +59,14 @@ function TemplateOptions({
 		return (
 			<ActionMenuGroup>
 				<ActionMenuItem
-					icon="mail-reply-all"
+					icon={FileText}
 					onClick={callWith(openModal, INSERT_MODAL)}>
 					<Text id="emailTemplates.insertTemplateLabel" />
 				</ActionMenuItem>
-				<ActionMenuItem icon="folder-add" onClick={callWith(openModal, SAVE_MODAL)}>
+				<ActionMenuItem icon={FileBox} onClick={callWith(openModal, SAVE_MODAL)}>
 					<Text id="emailTemplates.saveTemplateLabel" />
 				</ActionMenuItem>
-				<ActionMenuItem icon="about" onClick={callWith(openModal, HELP_MODAL)}>
+				<ActionMenuItem icon={FileQuestionMark} onClick={callWith(openModal, HELP_MODAL)}>
 					<Text id="emailTemplates.helpTitle" />
 				</ActionMenuItem>
 			</ActionMenuGroup>

@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "lodash-es": "^4.17.15"
+    "lodash-es": "^4.17.15",
+    "lucide-preact": "^0.577.0"
   }
 }
