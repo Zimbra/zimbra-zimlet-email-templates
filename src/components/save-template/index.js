@@ -10,20 +10,17 @@ import { useFoldersQuery } from '@zimbra-client/hooks/graphql';
 import withIntl from '../../enhancers';
 import get from 'lodash-es/get';
 
-function SaveTemplate(
-	{
-		getSubject,
-		subjectRequire,
-		getMessage,
-		closeSaveModal,
-		savedMsg,
-		saveMsgError,
-		saveMsgSelectFolder,
-		saveMsgPermissionIssue,
-		context: zimletContext
-	},
+function SaveTemplate({
+	getSubject,
+	subjectRequire,
+	getMessage,
+	closeSaveModal,
+	savedMsg,
+	saveMsgError,
+	saveMsgSelectFolder,
+	saveMsgPermissionIssue,
 	context
-) {
+}) {
 	const [state, setState] = useState(() => ({
 		folderList: [],
 		sharedFolders: [],
@@ -49,43 +46,42 @@ function SaveTemplate(
 					selectedFolderId: folderData.id
 				};
 			});
-		}, [selectedFolderId]
+		},
+		[selectedFolderId]
 	);
 
-	const handleSaveClick = useCallback(
-		() => {
-			const currSubject = getSubject();
-			if (currSubject.trim() == '') {
-				notify(subjectRequire);
-				return;
-			}
+	const handleSaveClick = useCallback(() => {
+		const currSubject = getSubject();
+		if (currSubject.trim() == '') {
+			notify(subjectRequire);
+			return;
+		}
 
-			const msg = getMessage();
-			if (selectedFolderId !== null) {
-				moveMessage(context, msg.draftId, selectedFolderId)
-					.then(moveRes => {
-						if (moveRes.id) {
-							notify(savedMsg);
-							closeSaveModal();
-						} else {
-							notify(saveMsgPermissionIssue);
-						}
-					})
-					.catch(error => {
-						notify(saveMsgError);
-						console.error('Error: ', error);
+		const msg = getMessage();
+		if (selectedFolderId !== null) {
+			moveMessage(context, msg.draftId, selectedFolderId)
+				.then(moveRes => {
+					if (moveRes.id) {
+						notify(savedMsg);
 						closeSaveModal();
-					});
-			} else {
-				notify(saveMsgSelectFolder);
-			}
-		}, [selectedFolderId]
-	);
+					} else {
+						notify(saveMsgPermissionIssue);
+					}
+				})
+				.catch(error => {
+					notify(saveMsgError);
+					console.error('Error: ', error);
+					closeSaveModal();
+				});
+		} else {
+			notify(saveMsgSelectFolder);
+		}
+	}, [selectedFolderId]);
 
 	const notify = message => {
-		const { dispatch } = zimletContext.store;
+		const { dispatch } = context.store;
 		dispatch(
-			zimletContext.zimletRedux.actions.notifications.notify({
+			context.zimletRedux.actions.notifications.notify({
 				message
 			})
 		);
@@ -93,13 +89,15 @@ function SaveTemplate(
 
 	useEffect(() => {
 		if (data) {
-			const folders = (get(data, 'getFolder.folders.0.folders') || []).filter(folder => !FILTER_FOLDER_IDS.includes(parseInt(folder.id))) // Trash, Chat
-			const sharedFolders = (get(data, 'getFolder.folders.0.linkedFolders') || []);
+			const folders = (get(data, 'getFolder.folders.0.folders') || []).filter(
+				folder => !FILTER_FOLDER_IDS.includes(parseInt(folder.id))
+			); // Trash, Chat
+			const sharedFolders = get(data, 'getFolder.folders.0.linkedFolders') || [];
 			setState(prevState => {
 				return {
 					...prevState,
 					folderList: folders,
-					sharedFolders: sharedFolders,
+					sharedFolders,
 					loading: false
 				};
 			});
@@ -122,26 +120,28 @@ function SaveTemplate(
 			{loading ? (
 				<Spinner block />
 			) : (
-					<div class={style.dataInner}>
-						<div class={style.leftSide}>
-							<p class={style.saveTip}>{saveMsgSelectFolder}</p>
-							<FolderListLight
-								folders={folderList}
-								folderNameProp={getFolderName}
-								onFolderClick={handleFolderClick}
-								sharedFolders={sharedFolders}
-							/>
-						</div>
+				<div class={style.dataInner}>
+					<div class={style.leftSide}>
+						<p class={style.saveTip}>{saveMsgSelectFolder}</p>
+						<FolderListLight
+							folders={folderList}
+							folderNameProp={getFolderName}
+							onFolderClick={handleFolderClick}
+							sharedFolders={sharedFolders}
+						/>
 					</div>
-				)}
+				</div>
+			)}
 		</ModalDialog>
 	);
 }
 
-export default withIntl()(withText({
-	subjectRequire: 'emailTemplates.subjectRequire',
-	savedMsg: 'emailTemplates.savedMsg',
-	saveMsgError: 'emailTemplates.saveMsgError',
-	saveMsgSelectFolder: 'emailTemplates.saveMsgSelectFolder',
-	saveMsgPermissionIssue: 'emailTemplates.saveMsgPermissionIssue'
-})(SaveTemplate));
+export default withIntl()(
+	withText({
+		subjectRequire: 'emailTemplates.subjectRequire',
+		savedMsg: 'emailTemplates.savedMsg',
+		saveMsgError: 'emailTemplates.saveMsgError',
+		saveMsgSelectFolder: 'emailTemplates.saveMsgSelectFolder',
+		saveMsgPermissionIssue: 'emailTemplates.saveMsgPermissionIssue'
+	})(SaveTemplate)
+);

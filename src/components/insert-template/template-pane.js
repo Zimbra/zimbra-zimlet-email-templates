@@ -5,12 +5,15 @@ import cx from 'classnames';
 import { useState, useEffect } from 'preact/hooks';
 import { fetchListing } from '../../lib/util';
 import { callWith } from '@zimbra-client/util';
+import { useZimbraContext } from '@zimbra-client/hooks';
 import get from 'lodash-es/get';
 
-export default function TemplatePane(
-	{ selectedFolderName, selectedTemplate, setSelectedTemplate },
-	context
-) {
+export default function TemplatePane({
+	selectedFolderName,
+	selectedTemplate,
+	setSelectedTemplate
+}) {
+	const context = useZimbraContext();
 	const [templateList, setTemplateList] = useState([]);
 	const [clickedTemplate, setclickedTemplate] = useState(selectedTemplate);
 
@@ -51,7 +54,13 @@ export default function TemplatePane(
 		));
 	return (
 		<div class={style.innerClass}>
-			{templateList.length > 0 ? list : <div class={style.noItems}><Text id="emailTemplates.noTemplatesMsg" /></div>}
+			{templateList.length > 0 ? (
+				list
+			) : (
+				<div class={style.noItems}>
+					<Text id="emailTemplates.noTemplatesMsg" />
+				</div>
+			)}
 		</div>
 	);
 }
